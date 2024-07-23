@@ -24,7 +24,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: anusha414/reusable-demo-workflows
-          ref: master
           
       - name: ls command
         run: |
