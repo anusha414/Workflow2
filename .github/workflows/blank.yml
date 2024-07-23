@@ -29,7 +29,7 @@ jobs:
       - name: ls command
         run: |
           echo $GITHUB_WORKSPACE
-          ls
+          ls -a
 
       - name: Run a one-line script
         run: pwd
