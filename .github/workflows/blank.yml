@@ -22,7 +22,10 @@ jobs:
 
       - name: Check out the repository
         uses: actions/checkout@v4
-        
+        with:
+          repository: anusha414/reusable-demo-workflows
+          ref: master
+          
       - name: ls command
         run: |
           echo $GITHUB_WORKSPACE
