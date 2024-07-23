@@ -30,4 +30,9 @@ jobs:
           
       - name: Call Hello World Action
         uses: anusha414/reusable-demo-workflows/.github/actions/hello-world-action@master
+        
+      - name: ls command
+        run: |
+          echo $GITHUB_WORKSPACE
+          ls -a
 
