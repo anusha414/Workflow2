@@ -31,5 +31,5 @@ jobs:
           ls -a
           
       - name: Call Hello World Action
-        uses: ./.github/actions/hello-world-action
+        uses: ./.github/actions/hello-world-action@master
 
