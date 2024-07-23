@@ -20,7 +20,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: ls command
-        run: echo $GITHUB_WORKSPACE
+        run: |
+          echo $GITHUB_WORKSPACE
+          ls
 
       - name: Run a one-line script
         run: pwd
