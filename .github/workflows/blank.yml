@@ -39,6 +39,6 @@ jobs:
         
       - name: ls command
         run: |
-          echo $GITHUB_WORKSPACE
+          echo "$GITHUB_WORKSPACE"
           ls -a
 
