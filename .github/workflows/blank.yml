@@ -23,10 +23,9 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
           
-      - name: ls command
-        run: |
-          echo $GITHUB_WORKSPACE
-          ls -a
+      - name: Super-Linter
+        uses: super-linter/super-linter@v6.7.0
+            
           
       - name: Call Hello World Action
         uses: anusha414/reusable-demo-workflows/.github/actions/hello-world-action@master
