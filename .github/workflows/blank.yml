@@ -29,10 +29,19 @@ jobs:
         uses: actions/checkout@v4
           
       - name: Super-Linter
-        uses: super-linter/super-linter@v6.7.0           
+        uses: super-linter/super-linter@v6.7.0
+        env:
+          # GITHUB_TOKEN: ${{ inputs.token }}
+          VALIDATE_ALL_CODEBASE: false
+          # VALIDATE_CSHARP: false
+          # FILTER_REGEX_INCLUDE: .*src/.*
+          FILTER_REGEX_INCLUDE: .
+          # FILTER_REGEX_INCLUDE: "./${PWD/$GITHUB_REPO/}/.*"
+          # FILTER_REGEX_INCLUDE: ${{ inputs.working-directory }}
+          # /.*\\.(cs|js)$'
+          # FILTER_REGEX_EXCLUDE: .github/.*
+          # FILTER_REGEX_EXCLUDE: '.*\\.github/.*'
           
-      - name: Call Hello World Action
-        uses: anusha414/reusable-demo-workflows/.github/actions/hello-world-action@master
         
       - name: ls command
         run: |
