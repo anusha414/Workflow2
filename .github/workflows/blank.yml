@@ -33,6 +33,7 @@ jobs:
         env:
           # GITHUB_TOKEN: ${{ inputs.token }}
           VALIDATE_ALL_CODEBASE: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # VALIDATE_CSHARP: false
           # FILTER_REGEX_INCLUDE: .*src/.*
          # FILTER_REGEX_INCLUDE: .
