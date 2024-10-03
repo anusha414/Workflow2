@@ -8,5 +8,4 @@ jobs:
   call-ci:
     uses: anusha414/reusable-demo-workflows/.github/workflows/matrix.yml@master  # Adjust the username and branch as needed
     with:
-      node-version: '[14,16]'  # Specify the Node.js versions
-      os: '["ubuntu-latest", "windows-latest"]'         # Specify the OS
+      combinations: '[{"node-version": "14", "os-version": "ubuntu-latest"}, {"node-version": "16", "os-version": "windows-latest"}]'
