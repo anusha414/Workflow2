@@ -1,6 +1,5 @@
 name: Call Node.js CI
 
-
 on:
   push:
     branches: [ master ]
