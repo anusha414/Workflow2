@@ -1,0 +1,12 @@
+name: Call Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  call-ci:
+    uses: anusha414/reusable-demo-workflows/.github/workflows/matrix.yml@master  # Adjust the username and branch as needed
+    with:
+      node-versions: '[14,16]'  # Specify the Node.js versions
+      os: '["ubuntu-latest", "windows-latest"]'         # Specify the OS
