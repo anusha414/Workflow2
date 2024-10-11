@@ -39,7 +39,7 @@ jobs:
   Print:
     needs: build
     # needs: [ "Initialise-Terraform"]
-    if: needs.build.outputs.file_changed == 'true'
+    if: env.file_changed == 'true'
     runs-on: ubuntu-latest
     steps:
     - name: checkout 
