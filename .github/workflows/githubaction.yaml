@@ -32,7 +32,7 @@ jobs:
           fi
 
       - name: Display output
-        run: echo "file_changed=${{ steps.check.outputs.file_changed }}"  # Display the output
+        run: echo "file_changed_${{ matrix.value2 }}=${{ steps.check.outputs.[matrix.value2] }}"  # Display the output
 
   Print:
     needs: build
