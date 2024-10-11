@@ -32,8 +32,11 @@ jobs:
       - name: Check for specific file changes
         id: check
         run: |
-          echo "file_changed=true" >> $GITHUB_ENV
-          echo "hello world"
+          if git diff HEAD~1 HEAD | grep -q './src/BH.FunctionApp/BH.FunctionApp/BH.FunctionApp.csproj'; then
+            echo "file_changed=true" >> $GITHUB_ENV
+          else
+            echo "file_changed=false" >> $GITHUB_ENV
+          fi
       - name: display env
         run: echo ${{ env.file_changed }}
   Print:
