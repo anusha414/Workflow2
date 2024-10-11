@@ -19,11 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       file_changed: ${{ steps.build.outputs.file_changed }}
-    
-    permissions:
-      contents: read  # Change from 'write' to 'read' or minimal permissions
-      actions: read
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -41,4 +36,12 @@ jobs:
           else
             echo "file_changed=false" >> $GITHUB_ENV
           fi
+  Print:
+    needs: build
+    # needs: [ "Initialise-Terraform"]
+    if: needs.build.outputs.file_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout 
+      run: echo "hello world"
           
