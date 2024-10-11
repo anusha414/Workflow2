@@ -27,8 +27,7 @@ jobs:
           fi
 
       - name: display env
-        run: echo ${{ env.file_changed }}
-
+        run: echo $GITHUB_OUTPUT
   Print:
     needs: build
     if: ${{ needs.build.outputs.file_changed == 'true' }}
