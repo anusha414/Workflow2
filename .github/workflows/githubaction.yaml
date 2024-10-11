@@ -33,7 +33,7 @@ jobs:
 
       - name: Display output
         #run: echo "file_changed_${{ matrix.value2 }}=${{ steps.check.outputs['file_changed_' + matrix.value2] }}"  # Display the output
-        run: echo "file_changed_${{ matrix.value2 }}
+        run: echo "file_changed_${{ matrix.value2 }}"
         
   Print:
     needs: build
