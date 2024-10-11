@@ -22,7 +22,7 @@ jobs:
         run: |
           # Check if there are specific file changes
           #if [ 20 -gt 10 ]; then
-          if git diff HEAD~1 HEAD; then
+          if git diff HEAD~1 HEAD | grep -q '.README.md'; then
             echo "file_changed=true" >> $GITHUB_OUTPUT  # Set output correctly
           else
             echo "file_changed=false" >> $GITHUB_OUTPUT  # Set output correctly
