@@ -26,6 +26,9 @@ jobs:
             echo "file_changed=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: display env
+        run: echo ${{ env.file_changed }}
+
   Print:
     needs: build
     if: ${{ needs.build.outputs.file_changed == 'true' }}
