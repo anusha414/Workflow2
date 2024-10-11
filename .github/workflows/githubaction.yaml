@@ -35,11 +35,11 @@ jobs:
           echo "file_changed=true" >> $GITHUB_ENV
           echo "hello world"
       - name: display env
-        run: echo $GITHUB_ENV
+        run: echo ${{ steps.build.outputs.file_changed }}
   Print:
     needs: build
     # needs: [ "Initialise-Terraform"]
-    if: env.file_changed == 'true'
+    if: ${{ needs.build.outputs.file_changed }} == 'true'
     runs-on: ubuntu-latest
     steps:
     - name: checkout 
