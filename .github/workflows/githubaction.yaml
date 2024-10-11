@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      file_changed: ${{ steps.check.outputs.file_changed }}
+      file_changed: ${{ steps.check.outputs.file_changed }}  # Reference output
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
@@ -20,20 +20,20 @@ jobs:
       - name: Check for specific file changes
         id: check
         run: |
-          # if git diff HEAD~1 HEAD | grep -q '.README.md'; then
-          if [ 20 -gt 10 ];then
-            echo "file_changed=true" >> $GITHUB_ENV
+          # Check if there are specific file changes
+          if [ 20 -gt 10 ]; then
+            echo "file_changed=true" >> $GITHUB_OUTPUT  # Set output correctly
           else
-            echo "file_changed=false" >> $GITHUB_ENV
+            echo "file_changed=false" >> $GITHUB_OUTPUT  # Set output correctly
           fi
 
+      - name: Display output
+        run: echo "file_changed=${{ steps.check.outputs.file_changed }}"  # Display the output
 
-      - name: display env
-        run: echo $GITHUB_ENV
   Print:
     needs: build
-    if: ${{ needs.build.outputs.file_changed == 'true' }}
+    if: ${{ needs.build.outputs.file_changed == 'true' }}  # Check the output
     runs-on: ubuntu-latest
     steps:
       - name: Display message
-        run: echo "hello world"
+        run: echo "Deploy job is executed because file_changed is true."
