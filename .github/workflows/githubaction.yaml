@@ -32,7 +32,7 @@ jobs:
       - name: Check for specific file changes
         id: check
         run: |
-          if git diff HEAD~1 HEAD | grep -q '.README.md'; then
+          if 10>20; then
             echo "file_changed=true" >> $GITHUB_ENV
           else
             echo "file_changed=false" >> $GITHUB_ENV
