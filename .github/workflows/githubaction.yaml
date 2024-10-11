@@ -32,7 +32,6 @@ jobs:
       - name: Check for specific file changes
         id: check
         run: |
-          git fetch origin master
           if git diff 15322dc0f749a86258f6ea377fc29cf769b37e51 6f1042392f8e3638d1b67f8792e98c49c24549ca | grep -q '.README.md'; then
             echo "file_changed=true" >> $GITHUB_ENV
           else
