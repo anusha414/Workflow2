@@ -5,7 +5,7 @@ on:
   push:
     branches: [ "master" ]
     paths:
-    - './README.md'
+    - 'README.md'
 
 permissions: read-all
 
