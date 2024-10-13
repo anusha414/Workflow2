@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        value2: [A,B]  
+        value1: [1]
+        value2: [A]  
     outputs:
       file_changed: ${{ steps.check.outputs.file_changed }}  # Reference output
     steps:
@@ -27,19 +28,24 @@ jobs:
           # Check if there are specific file changes
           #if [ 20 -gt 10 ]; then
           if git diff HEAD~1 HEAD | grep -q '.README.md'; then
-            echo "file_changed_${{ matrix.value2 }}=true" >> $GITHUB_OUTPUT  # Set output correctly
+            echo "file_changed_${{ matrix.value1 }}=true" >> $GITHUB_OUTPUT  # Set output correctly
           else
-            echo "file_changed_${{ matrix.value2 }}=false" >> $GITHUB_OUTPUT  # Set output correctly
+            echo "file_changed=false" >> $GITHUB_OUTPUT  # Set output correctly
           fi
 
       - name: Display output
-        run: echo "file_changed_${{ matrix.value2 }}=${{ steps.check.outputs['file_changed_' + matrix.value2] }}"
-        #run: echo "file_changed_${{ matrix.value2 }}"
+        if: ${{ file_changed }} == 'true'
+        run: echo ${{ matrix.value1 }}
+
         
-  Print:
-    needs: build
-    if: ${{ needs.build.outputs.file_changed == 'true' }}  # Check the output
-    runs-on: ubuntu-latest
-    steps:
-      - name: Display message
-        run: echo "Deploy job is executed because file_changed is true."
+  # Print:
+  #   needs: build
+  #   if: ${{ needs.build.outputs.file_changed == 'true' }}  # Check the output
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       value1: [1]
+  #       value2: [A]  
+  #   steps:
+  #     - name: Display message
+  #       run: echo "Deploy job is executed because file_changed is true."
