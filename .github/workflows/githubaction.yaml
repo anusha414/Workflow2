@@ -27,6 +27,9 @@ jobs:
       - name: display
         run: echo "hello world"
 
+      - name: event
+        run: echo ${{ github.event.head_commit.message }}
+
       # - name: Check for specific file changes
       #   id: check
       #   run: |
