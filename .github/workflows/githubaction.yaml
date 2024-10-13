@@ -4,38 +4,43 @@ name: githubaction example
 on:
   push:
     branches: [ "master" ]
+    paths:
+    - './README.md'
 
 permissions: read-all
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        value1: [1]
-        value2: [A]  
-    outputs:
-      file_changed: ${{ steps.check.outputs.file_changed }}  # Reference output
+    # strategy:
+    #   matrix:
+    #     value1: [1]
+    #     value2: [A]  
+    # outputs:
+    #   file_changed: ${{ steps.check.outputs.file_changed }}  # Reference output
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Check for specific file changes
-        id: check
-        run: |
-          # Check if there are specific file changes
-          #if [ 20 -gt 10 ]; then
-          if git diff HEAD~1 HEAD | grep -q '.README.md'; then
-            echo "file_changed_${{ matrix.value1 }}=true" >> $GITHUB_OUTPUT  # Set output correctly
-          else
-            echo "file_changed=false" >> $GITHUB_OUTPUT  # Set output correctly
-          fi
+      - name: display
+        run: echo "hello world"
 
-      - name: Display output
-        if: ${{ file_changed }} == 'true'
-        run: echo ${{ matrix.value1 }}
+      # - name: Check for specific file changes
+      #   id: check
+      #   run: |
+      #     # Check if there are specific file changes
+      #     #if [ 20 -gt 10 ]; then
+      #     if git diff HEAD~1 HEAD | grep -q '.README.md'; then
+      #       echo "file_changed_${{ matrix.value1 }}=true" >> $GITHUB_OUTPUT  # Set output correctly
+      #     else
+      #       echo "file_changed=false" >> $GITHUB_OUTPUT  # Set output correctly
+      #     fi
+
+      # - name: Display output
+      #   if: ${{ file_changed }} == 'true'
+      #   run: echo ${{ matrix.value1 }}
 
         
   # Print:
